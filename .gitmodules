@@ -1,0 +1,12 @@
+[submodule "wla-dx"]
+	path = wla-dx
+	url = https://github.com/vhelin/wla-dx.git
+	branch = master
+[submodule "bmp2tile"]
+	path = bmp2tile
+	url = https://github.com/maxim-zhao/bmp2tile.git
+	branch = master
+[submodule "bmp2tilecompressors"]
+	path = bmp2tilecompressors
+	url = https://github.com/maxim-zhao/bmp2tilecompressors
+	branch = master
