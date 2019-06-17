@@ -10,7 +10,3 @@
 	path = bmp2tilecompressors
 	url = https://github.com/maxim-zhao/bmp2tilecompressors
 	branch = master
-[submodule "devkitSMS"]
-	path = devkitSMS
-	url = https://github.com/sverx/devkitSMS.git
-	branch = master
