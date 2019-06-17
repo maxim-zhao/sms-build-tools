@@ -29,6 +29,9 @@ build_script:
     ren PSGTool\License.txt license_PSGTool.txt
     ren PSGTool\readme.txt readme_PSGTool.txt
     7z a tools.7z .\PSGTool\PSGTool.jar .\PSGTool\license_PSGTool.txt .\PSGTool\readme_PSGTool.txt
+    
+    rem Compile.bat
+    7z a tools.7z Compile.bat
 artifacts:
 - path: '*.7z'
   name: Package
