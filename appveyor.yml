@@ -3,7 +3,7 @@ image: Visual Studio 2017
 install:
 - cmd: git submodule -q update --init
 build_script:
-- cmd: >-
+- cmd: |-
     rem BMP2Tile
     rem Can't easily do Delphi in appveyor so we just download it
     appveyor DownloadFile https://github.com/maxim-zhao/bmp2tile/releases/download/v0.43/bmp2tile043.zip
