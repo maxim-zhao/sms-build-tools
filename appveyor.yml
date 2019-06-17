@@ -17,7 +17,7 @@ build_script:
 
     rem WLA DX
     cd wla-dx
-    cmake . -G Ninja
+    cmake .
     cmake --build . --config Release --target wlalink
     cmake --build . --config Release --target wla-z80
     cd ..
