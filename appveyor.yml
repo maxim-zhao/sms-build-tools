@@ -33,9 +33,6 @@ build_script:
     
     rem Compile.bat
     7z a tools.7z Compile.bat
-
-    rem setup.cmd
-    7z a tools.7z setup.cmd
 artifacts:
 - path: '*.7z'
   name: Package
