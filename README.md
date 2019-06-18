@@ -36,3 +36,13 @@ easier to invoke from the path.
 2. Decompress somewhere
 3. Add that somewhere to the path
 4. ENJOY!!!
+
+For example, in appveyor:
+
+```
+appveyor DownloadFile https://github.com/maxim-zhao/sms-build-tools/releases/download/1.0.48/tools.7z
+7z x tools.7z -oc:\tools
+path %path%;c:\tools
+```
+
+You will need Java to use PSGTool. You will need Windows to use pretty much everything else.
