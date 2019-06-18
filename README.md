@@ -20,11 +20,19 @@ Output is at `bmp2tilecompressors/compressors/Release/*.dll`.
 
 ## WLA DX
 
-1. Open a Visual Studio develoepr tools command prompt in the wla-dx/ directory
+1. Open a Visual Studio developer tools command prompt in the wla-dx/ directory
 2. `cmake . && cmake --build . --config Release -j`
 
 Output is at `wla-dx/binaries/Release/wla*.exe`.
 
 ## PSGTool
 
-Included as a binary, no source available.
+Included as a binary, no source available. `psgtool.cmd` wraps it to make it
+easier to invoke from the path.
+
+# Using
+
+1. Download tools.7z
+2. Decompress somewhere
+3. Add that somewhere to the path
+4. ENJOY!!!
