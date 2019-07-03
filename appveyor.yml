@@ -9,7 +9,7 @@ build_script:
     msbuild bmp2tile\source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
     ren bmp2tile\readme.md readme_bmp2tile.md
     ren bmp2tile\LICENSE license_bmp2tile.txt
-    7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\readme_bmp2tile.md .\bmp2tile\license_bmp2tile
+    7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\readme_bmp2tile.md .\bmp2tile\license_bmp2tile.txt
 
     rem compressor DLLs
     msbuild bmp2tilecompressors\compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
