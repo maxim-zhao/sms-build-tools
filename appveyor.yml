@@ -10,20 +10,21 @@ build_script:
     call "c:\Program Files (x86)\Microsoft Visual Studio\2017\Community\vc\Auxiliary\Build\vcvars64.bat"
     type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
     call make-cleaned.bat
-    ren COPYING copying-flips.txt
-    ren COPYING.gpl3 copying.gpl3-flips.txt
+    ren COPYING flips.copying.txt
+    ren COPYING.gpl3 flips.copying.gpl3.txt
     cd ..
-    7z a tools.7z .\flips\flips.exe .\flips\copying*.txt
+    7z a tools.7z .\flips\flips.exe .\flips\flips.copying.txt .\flips\flips.copying.gpl3.txt
 
     rem BMP2Tile
     msbuild bmp2tile\source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
-    ren bmp2tile\readme.md readme_bmp2tile.md
-    ren bmp2tile\LICENSE license_bmp2tile.txt
-    7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\readme_bmp2tile.md .\bmp2tile\license_bmp2tile.txt
+    ren bmp2tile\readme.md bmp2tile.readme.md
+    ren bmp2tile\LICENSE bmp2tile.license.txt
+    7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\bmp2tile.readme.md .\bmp2tile\bmp2tile.license.txt
 
     rem compressor DLLs
     msbuild bmp2tilecompressors\compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
-    7z a tools.7z .\bmp2tilecompressors\compressors\Release\*.dll
+    ren bmp2tilecompressors\LICENSE bmp2tilecompressors\bmp2tilecompressors.license.txt
+    7z a tools.7z .\bmp2tilecompressors\compressors\Release\*.dll .\bmp2tilecompressors\bmp2tilecompressors.license.txt
 
     rem WLA DX
     cd wla-dx
@@ -31,14 +32,14 @@ build_script:
     cmake --build . --config Release --target wlalink
     cmake --build . --config Release --target wla-z80
     cd ..
-    ren wla-dx\LICENSE license_wladx.txt
-    ren wla-dx\readme.md readme_wladx.md
-    7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\license_wladx.txt .\wla-dx\readme_wladx.md
+    ren wla-dx\LICENSE wladx.license.txt
+    ren wla-dx\readme.md wladx.readme.md
+    7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\wladx.license.txt .\wla-dx\wladx.readme.md
 
     rem PSGTool
-    ren PSGTool\License.txt license_PSGTool.txt
-    ren PSGTool\readme.txt readme_PSGTool.txt
-    7z a tools.7z .\PSGTool\PSGTool.jar .\PSGTool\license_PSGTool.txt .\PSGTool\readme_PSGTool.txt psgtool.cmd
+    ren PSGTool\License.txt PSGTool.license.txt
+    ren PSGTool\readme.txt PSGTool.readme.txt
+    7z a tools.7z .\PSGTool\PSGTool.jar .\PSGTool\PSGTool.license.txt .\PSGTool\PSGTool.readme.txt psgtool.cmd
     
     rem Compile.bat
     7z a tools.7z Compile.bat
