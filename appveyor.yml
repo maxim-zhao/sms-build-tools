@@ -5,6 +5,15 @@ install:
 - cmd: git submodule -q update --init
 build_script:
 - cmd: |-
+    rem flips
+    cd flips
+    type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
+    call make-cleaned.bat
+    ren COPYING copying-flips.txt
+    ren COPYING.gpl3 copying.gpl3-flips.txt
+    cd ..
+    7z a tools.7z .\flips\flips.exe .\flips\copying*.txt
+
     rem BMP2Tile
     msbuild bmp2tile\source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
     ren bmp2tile\readme.md readme_bmp2tile.md
@@ -23,7 +32,7 @@ build_script:
     cd ..
     ren wla-dx\LICENSE license_wladx.txt
     ren wla-dx\readme.md readme_wladx.md
-    7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\wladx_license.txt .\wla-dx\wladx_readme.md
+    7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\license_wladx.txt .\wla-dx\readme_wladx.md
 
     rem PSGTool
     ren PSGTool\License.txt license_PSGTool.txt
@@ -32,15 +41,6 @@ build_script:
     
     rem Compile.bat
     7z a tools.7z Compile.bat
-    
-    rem flips
-    cd flips
-    type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
-    call make-cleaned.bat
-    ren COPYING copying-flips.txt
-    ren COPYING.gpl3 copying.gpl3-flips.txt
-    cd ..
-    7z a tools.7z .\flips\flips.exe .\flips\copying*.txt
 artifacts:
 - path: '*.7z'
   name: Package
