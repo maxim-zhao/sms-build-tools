@@ -32,9 +32,10 @@ easier to invoke from the path.
 
 ## Flips
 
-1. cd Flips
-2. make.bat
-3. Ctrl+C to escape
+1. Configure "VS developer tools"
+2. cd Flips
+3. `make.bat`
+4. Ctrl+C to escape
 
 # Using
 
