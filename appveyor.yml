@@ -21,8 +21,8 @@ build_script:
     cmake --build . --config Release --target wlalink
     cmake --build . --config Release --target wla-z80
     cd ..
-    ren wla-dx\LICENSE wladx_license.txt
-    ren wla-dx\readme.md wladx_readme.md
+    ren wla-dx\LICENSE license_wladx.txt
+    ren wla-dx\readme.md readme_wladx.md
     7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\wladx_license.txt .\wla-dx\wladx_readme.md
 
     rem PSGTool
@@ -32,6 +32,15 @@ build_script:
     
     rem Compile.bat
     7z a tools.7z Compile.bat
+    
+    rem flips
+    cd flips
+    type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
+    call make-cleaned.bat
+    ren COPYING copying-flips.txt
+    ren COPYING.gpl3 copying.gpl3-flips.txt
+    cd ..
+    7z a tools.7z .\flips\flips.exe .\flips\copying*.txt
 artifacts:
 - path: '*.7z'
   name: Package

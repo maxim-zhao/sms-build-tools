@@ -6,7 +6,7 @@ Build tools for SMS games. Useful as a build helper.
 ## BMP2Tile
 
 1. Open bmp2tile/source/bmp2tile.dpr in Delphi 7
-2. Coose Project -> Build bmp2tile
+2. Choose Project -> Build bmp2tile
 
 Output is at `bmp2tile/source/bmp2tile.exe`.
 
@@ -29,6 +29,12 @@ Output is at `wla-dx/binaries/Release/wla*.exe`.
 
 Included as a binary, no source available. `psgtool.cmd` wraps it to make it
 easier to invoke from the path.
+
+## Flips
+
+1. cd Flips
+2. make.bat
+3. Ctrl+C to escape
 
 # Using
 

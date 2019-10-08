@@ -10,3 +10,7 @@
 	path = bmp2tilecompressors
 	url = https://github.com/maxim-zhao/bmp2tilecompressors
 	branch = master
+[submodule "flips"]
+	path = flips
+	url = https://github.com/Alcaro/Flips.git
+	branch = master
