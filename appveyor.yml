@@ -7,6 +7,7 @@ build_script:
 - cmd: |-
     rem flips
     cd flips
+    call "c:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\vc\Auxiliary\Build\vcvars64.bat"
     type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
     call make-cleaned.bat
     ren COPYING copying-flips.txt
