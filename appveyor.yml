@@ -7,9 +7,7 @@ build_script:
 - cmd: |-
     rem flips
     cd flips
-    call "c:\Program Files (x86)\Microsoft Visual Studio\2017\Community\vc\Auxiliary\Build\vcvars64.bat"
-    type make.bat | find /v "vcvars" | find /v "goto h" > make-cleaned.bat
-    call make-cleaned.bat
+    cl /O2 /MT /EHsc *.cpp /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib libdivsufsort-2.0.1\libdivsufsort-2.0.1.lib
     ren COPYING flips.copying.txt
     ren COPYING.gpl3 flips.copying.gpl3.txt
     cd ..
