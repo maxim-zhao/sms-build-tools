@@ -9,7 +9,7 @@ build_script:
     cd flips
     call "c:\Program Files (x86)\Microsoft Visual Studio\2019\Community\vc\Auxiliary\Build\vcvars32.bat"
     echo.>strings.h
-    cl /O2 /MT /EHsc *.cpp libdivsufsort-2.0.1\lib\*.c /Ilibdivsufsort-2.0.1\include\ /I. /DHAVE_CONFIG_H /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib libdivsufsort-2.0.1\libdivsufsort-2.0.1.lib
+    cl /O2 /MT /EHsc *.cpp libdivsufsort-2.0.1\lib\*.c /Ilibdivsufsort-2.0.1\include\ /I. /DHAVE_CONFIG_H /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib
     ren COPYING flips.copying.txt
     ren COPYING.gpl3 flips.copying.gpl3.txt
     cd ..
