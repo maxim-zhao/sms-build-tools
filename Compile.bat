@@ -1,14 +1,11 @@
 @echo off
 rem :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-rem ::             WLA DX compiling batch file v4              ::
+rem ::             WLA DX compiling batch file                 ::
 rem :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 rem :: Do not edit anything unless you know what you're doing! ::
 rem :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set WLAPATH=%~dp0
-
-rem Cleanup to avoid confusion
-if exist object.o del object.o
 
 rem Compile
 "%WLAPATH%wla-z80.exe" -o "%~dpn1.o" "%1"
