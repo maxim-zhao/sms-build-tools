@@ -5,8 +5,9 @@ Build tools for SMS games. Useful as a build helper.
 
 ## BMP2Tile
 
-1. Open bmp2tile/source/bmp2tile.dpr in Delphi 7
-2. Choose Project -> Build bmp2tile
+1. Open bmp2tile/source/bmp2tile.sln in Visual Studio
+2. Choose the Release/x86 configuration
+3. Build -> Build All
 
 Output is at `bmp2tile/source/bmp2tile.exe`.
 
