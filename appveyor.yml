@@ -45,10 +45,8 @@ build_script:
     7z a tools.7z Compile.bat
     
     rem make
-    choco download make
-    where make
-    dir
-    
+    7z a tools.7z .\make\*
+
 artifacts:
 - path: '*.7z'
   name: Package
