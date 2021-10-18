@@ -1,42 +1,26 @@
 # sms-build-tools
-Build tools for SMS games. Useful as a build helper.
+Build tools for SMS games. Useful as a build helper. 
 
-# Building
+This project builds from source where possible using a CI platform so you can have some confidence in the provenance of the binaries. Builds produce new releases automatically and you can reference them by number for a stable build environment.
 
-## BMP2Tile
+Note that this project is only intended to support Windows currently. Linux users should be able to figure things out for themselves.
 
-1. Open bmp2tile/source/bmp2tile.sln in Visual Studio
-2. Choose the Release/x86 configuration
-3. Build -> Build All
+# Contents
 
-Output is at `bmp2tile/source/bmp2tile.exe`.
+- [BMP2Tile](https://github.com/maxim-zhao/bmp2tile) with all [compressor DLLs](https://github.com/maxim-zhao/bmp2tilecompressors)
+- [WLA DX](https://github.com/vhelin/wla-dx), generally a recent version
+  - Only wlalink and wla-z80 (for now)
+  - Plus my "compile.bat" helper that simplifies building single-file projects
+- PSGTool 
+  - for use with [PSGLib](https://github.com/sverx/PSGlib)
+  - Plus a batch file wrapper
+- [Flips](https://github.com/Alcaro/Flips) for making patches
+- [GNU Make](https://www.gnu.org/software/make/) for build automation
 
-## Tile compressor DLLs
+Not included:
 
-1. Open bmp2tilecompressors/compressors/tilecompressordlls.sln in Visual Studio
-2. Choose the Release/x86 configuration
-3. Build -> Build All
-
-Output is at `bmp2tilecompressors/compressors/Release/*.dll`.
-
-## WLA DX
-
-1. Open a Visual Studio developer tools command prompt in the wla-dx/ directory
-2. `cmake . && cmake --build . --config Release -j`
-
-Output is at `wla-dx/binaries/Release/wla*.exe`.
-
-## PSGTool
-
-Included as a binary, no source available. `psgtool.cmd` wraps it to make it
-easier to invoke from the path.
-
-## Flips
-
-1. Configure "VS developer tools"
-2. cd Flips
-3. `make.bat`
-4. Ctrl+C to escape
+- [devKitSMS](https://github.com/sverx/devkitSMS) - you will need to pull it into your project some other way
+- [SDCC](http://sdcc.sourceforge.net) - needs a full install in your build anyway
 
 # Using
 
@@ -48,7 +32,7 @@ easier to invoke from the path.
 For example, in appveyor:
 
 ```
-appveyor DownloadFile https://github.com/maxim-zhao/sms-build-tools/releases/download/1.0.48/tools.7z
+appveyor DownloadFile https://github.com/maxim-zhao/sms-build-tools/releases/download/1.0.99/tools.7z
 7z x tools.7z -oc:\tools
 path %path%;c:\tools
 ```
