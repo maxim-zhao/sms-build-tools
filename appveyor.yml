@@ -50,8 +50,8 @@ build_script:
     call bootstrap.bat
     rem We omit support for the Guile scripting language which doesn't work right in Windows anyway
     call build_w32.bat --without-guile
-    copy ./WinRel/gnumake.exe make.exe
-    copy ./COPYING make.license.txt
+    copy WinRel\gnumake.exe make.exe
+    copy COPYING make.license.txt
     cd ..
     7z a tools.7z ./make/make.exe ./make/make.license.txt
 
