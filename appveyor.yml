@@ -29,8 +29,7 @@ build_script:
     rem WLA DX
     cd wla-dx
     cmake -A x64 -T host=x64 .
-    cmake --build . --config Release --target wlalink
-    cmake --build . --config Release --target wla-z80
+    cmake --build . --config Release --target wlalink --target wla-z80
     cd ..
     ren wla-dx\LICENSE wladx.license.txt
     ren wla-dx\readme.md wladx.readme.md
