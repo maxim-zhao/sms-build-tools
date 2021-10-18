@@ -14,3 +14,7 @@
 	path = flips
 	url = https://github.com/Alcaro/Flips.git
 	branch = master
+[submodule "make"]
+	path = make
+	url = https://git.savannah.gnu.org/git/make.git
+	branch = master

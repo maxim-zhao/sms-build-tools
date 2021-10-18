@@ -44,8 +44,13 @@ build_script:
     7z a tools.7z Compile.bat
     
     rem make
-    7z a tools.7z .\make\*
-
+    cd make
+    rem To build make we need sed...
+    path %path%;C:\msys64\bin
+    call bootstrap.bat
+    rem We omit support for the Guile scripting language which doesn't work right in Windows anyway
+    call build_w32.bat --without-guile
+    
 artifacts:
 - path: '*.7z'
   name: Package
