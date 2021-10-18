@@ -32,7 +32,7 @@ Not included:
 For example, in appveyor:
 
 ```
-appveyor DownloadFile https://github.com/maxim-zhao/sms-build-tools/releases/download/1.0.99/tools.7z
+appveyor DownloadFile https://github.com/maxim-zhao/sms-build-tools/releases/download/1.0.102/tools.7z
 7z x tools.7z -oc:\tools
 path %path%;c:\tools
 ```
