@@ -7,12 +7,12 @@ build_script:
 - cmd: |-
     rem flips
     cd flips
-    for /f %s in ('git rev-parse --short HEAD') do echo Floating IPS %s > ..\versions.txt
     call "c:\Program Files\Microsoft Visual Studio\2022\Community\vc\Auxiliary\Build\vcvars64.bat"
     echo.>strings.h
     cl /O2 /MT /EHsc *.cpp libdivsufsort-2.0.1\lib\*.c /Ilibdivsufsort-2.0.1\include\ /I. /DHAVE_CONFIG_H /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib
     copy COPYING flips.copying.txt
     copy COPYING.gpl3 flips.copying.gpl3.txt
+    for /f %%s in ('git rev-parse --short HEAD') do echo Floating IPS %%s > ..\versions.txt
     cd ..
     7z a tools.7z .\flips\flips.exe .\flips\flips.copying.txt .\flips\flips.copying.gpl3.txt
 
