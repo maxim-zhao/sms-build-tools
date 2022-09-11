@@ -18,7 +18,7 @@ build_script:
 
     rem BMP2Tile
     cd bmp2tile
-    for /f %s in ('git rev-parse --short HEAD') do echo BMP2Tile %s >> ..\versions.txt
+    for /f %%s in ('git rev-parse --short HEAD') do echo BMP2Tile %%s >> ..\versions.txt
     msbuild source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
     copy readme.md bmp2tile.readme.md
     copy LICENSE bmp2tile.license.txt
@@ -27,7 +27,7 @@ build_script:
 
     rem compressor DLLs
     cd bmp2tilecompressors
-    for /f %s in ('git rev-parse --short HEAD') do echo BMP2Tile compressors %s >> ..\versions.txt
+    for /f %%s in ('git rev-parse --short HEAD') do echo BMP2Tile compressors %%s >> ..\versions.txt
     msbuild bmp2tilecompressors\compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
     ren bmp2tilecompressors\LICENSE bmp2tilecompressors.license.txt
     cd ..
@@ -37,10 +37,10 @@ build_script:
     cd wla-dx
     cmake -A x64 -T host=x64 .
     cmake --build . --config Release --target wlalink --target wla-z80 --parallel --verbose
-    for /f %s in ('git rev-parse --short HEAD') do set git-rev=%s
-    for /f "delims=: tokens=2" %s in ('binaries\Release\wlalink.exe ^| find "$VER"') do set reported=%s
+    for /f %%s in ('git rev-parse --short HEAD') do set git-rev=%%s
+    for /f "delims=: tokens=2" %%s in ('binaries\Release\wlalink.exe ^| find "$VER"') do set reported=%%s
     echo %reported% %git-rev% >> ..\versions.txt
-    for /f "delims=: tokens=2" %s in ('binaries\Release\wla-z80.exe ^| find "$VER"') do set reported=%s
+    for /f "delims=: tokens=2" %%s in ('binaries\Release\wla-z80.exe ^| find "$VER"') do set reported=%%s
     echo %reported% %git-rev% >> ..\versions.txt
     cd ..
     ren wla-dx\LICENSE wladx.license.txt
@@ -65,8 +65,8 @@ build_script:
     call build_w32.bat --without-guile
     copy WinRel\gnumake.exe make.exe
     copy COPYING make.license.txt
-    for /f %s in ('git rev-parse --short HEAD') do set git-rev=%s
-    for /f "delims=" %s in ('make.exe --version ^| find "Make"') do set reported=%s
+    for /f %%s in ('git rev-parse --short HEAD') do set git-rev=%%s
+    for /f "delims=" %%s in ('make.exe --version ^| find "Make"') do set reported=%%s
     echo %reported% %git-rev% >> ..\versions.txt
     cd ..
     7z a tools.7z ./make/make.exe ./make/make.license.txt
