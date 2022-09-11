@@ -7,35 +7,48 @@ build_script:
 - cmd: |-
     rem flips
     cd flips
+    for /f %s in ('git rev-parse --short HEAD') do echo Floating IPS %s > ..\versions.txt
     call "c:\Program Files\Microsoft Visual Studio\2022\Community\vc\Auxiliary\Build\vcvars64.bat"
     echo.>strings.h
     cl /O2 /MT /EHsc *.cpp libdivsufsort-2.0.1\lib\*.c /Ilibdivsufsort-2.0.1\include\ /I. /DHAVE_CONFIG_H /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib
-    ren COPYING flips.copying.txt
-    ren COPYING.gpl3 flips.copying.gpl3.txt
+    copy COPYING flips.copying.txt
+    copy COPYING.gpl3 flips.copying.gpl3.txt
     cd ..
     7z a tools.7z .\flips\flips.exe .\flips\flips.copying.txt .\flips\flips.copying.gpl3.txt
 
     rem BMP2Tile
-    msbuild bmp2tile\source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
-    ren bmp2tile\readme.md bmp2tile.readme.md
-    ren bmp2tile\LICENSE bmp2tile.license.txt
+    cd bmp2tile
+    for /f %s in ('git rev-parse --short HEAD') do echo BMP2Tile %s >> ..\versions.txt
+    msbuild source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
+    copy readme.md bmp2tile.readme.md
+    copy LICENSE bmp2tile.license.txt
+    cd ..
     7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\bmp2tile.readme.md .\bmp2tile\bmp2tile.license.txt
 
     rem compressor DLLs
+    cd bmp2tilecompressors
+    for /f %s in ('git rev-parse --short HEAD') do echo BMP2Tile compressors %s >> ..\versions.txt
     msbuild bmp2tilecompressors\compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
     ren bmp2tilecompressors\LICENSE bmp2tilecompressors.license.txt
+    cd ..
     7z a tools.7z .\bmp2tilecompressors\compressors\Release\*.dll .\bmp2tilecompressors\bmp2tilecompressors.license.txt
 
     rem WLA DX
     cd wla-dx
     cmake -A x64 -T host=x64 .
     cmake --build . --config Release --target wlalink --target wla-z80 --parallel --verbose
+    for /f %s in ('git rev-parse --short HEAD') do set git-rev=%s
+    for /f "delims=: tokens=2" %s in ('binaries\Release\wlalink.exe ^| find "$VER"') do set reported=%s
+    echo %reported% %git-rev% >> ..\versions.txt
+    for /f "delims=: tokens=2" %s in ('binaries\Release\wla-z80.exe ^| find "$VER"') do set reported=%s
+    echo %reported% %git-rev% >> ..\versions.txt
     cd ..
     ren wla-dx\LICENSE wladx.license.txt
     ren wla-dx\readme.md wladx.readme.md
     7z a tools.7z .\wla-dx\binaries\Release\wlalink.exe .\wla-dx\binaries\Release\wla-z80.exe .\wla-dx\wladx.license.txt .\wla-dx\wladx.readme.md
 
     rem PSGTool
+    echo PSGTool (unknown version)>> versions.txt
     ren PSGTool\License.txt PSGTool.license.txt
     ren PSGTool\readme.txt PSGTool.readme.txt
     7z a tools.7z .\PSGTool\PSGTool.jar .\PSGTool\PSGTool.license.txt .\PSGTool\PSGTool.readme.txt psgtool.cmd
@@ -52,8 +65,13 @@ build_script:
     call build_w32.bat --without-guile
     copy WinRel\gnumake.exe make.exe
     copy COPYING make.license.txt
+    for /f %s in ('git rev-parse --short HEAD') do set git-rev=%s
+    for /f "delims=" %s in ('make.exe --version ^| find "Make"') do set reported=%s
+    echo %reported% %git-rev% >> ..\versions.txt
     cd ..
     7z a tools.7z ./make/make.exe ./make/make.license.txt
+
+    7z a tools.7z versions.txt
 
 artifacts:
 - path: '*.7z'
