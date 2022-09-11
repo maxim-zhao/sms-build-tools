@@ -7,7 +7,7 @@ build_script:
 - cmd: |-
     rem flips
     cd flips
-    call "c:\Program Files\Microsoft Visual Studio\2022\Community\vc\Auxiliary\Build\vcvars32.bat"
+    call "c:\Program Files\Microsoft Visual Studio\2022\Community\vc\Auxiliary\Build\vcvars64.bat"
     echo.>strings.h
     cl /O2 /MT /EHsc *.cpp libdivsufsort-2.0.1\lib\*.c /Ilibdivsufsort-2.0.1\include\ /I. /DHAVE_CONFIG_H /link /out:flips.exe shell32.lib comctl32.lib comdlg32.lib Advapi32.lib User32.lib gdi32.lib
     ren COPYING flips.copying.txt
@@ -29,7 +29,7 @@ build_script:
     rem WLA DX
     cd wla-dx
     cmake -A x64 -T host=x64 .
-    cmake --build . --config Release --target wlalink --target wla-z80
+    cmake --build . --config Release --target wlalink --target wla-z80 --parallel --verbose
     cd ..
     ren wla-dx\LICENSE wladx.license.txt
     ren wla-dx\readme.md wladx.readme.md
