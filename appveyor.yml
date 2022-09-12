@@ -28,8 +28,8 @@ build_script:
     rem compressor DLLs
     cd bmp2tilecompressors
     for /f %%s in ('git rev-parse --short HEAD') do echo BMP2Tile compressors %%s >> ..\versions.txt
-    msbuild bmp2tilecompressors\compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
-    ren bmp2tilecompressors\LICENSE bmp2tilecompressors.license.txt
+    msbuild compressors\tilecompressordlls.sln /m /p:Platform=x86;Configuration=Release
+    ren LICENSE bmp2tilecompressors.license.txt
     cd ..
     7z a tools.7z .\bmp2tilecompressors\compressors\Release\*.dll .\bmp2tilecompressors\bmp2tilecompressors.license.txt
 
