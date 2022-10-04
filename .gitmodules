@@ -18,3 +18,7 @@
 	path = make
 	url = https://git.savannah.gnu.org/git/make.git
 	branch = master
+[submodule "pcmenc"]
+	path = pcmenc
+	url = https://github.com/maxim-zhao/pcmenc.git
+	branch = master
