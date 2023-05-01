@@ -1,4 +1,4 @@
-Copyright (c) 2018-2019, Michael Stegmaier - http://www.emulicious.net
+Copyright (c) 2018-2023, Michael Stegmaier - http://www.emulicious.net
 All rights reserved.
 
 Permission to use, copy and distribute PSGTool in binary form,
