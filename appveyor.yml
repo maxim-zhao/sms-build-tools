@@ -61,8 +61,11 @@ build_script:
     7z a tools.7z .\pcmenc\encoder\x64\Release\pcmenc.exe
 
     rem Z80Bench
-    msbuild z80bench\z80bench.sln /m /p:Configuration=Release;RestorePackagesConfig=true /t:restore;build 
-    7z a tools.7z .\z80bench\bin\Release\*.exe .\z80bench\bin\Release\*.dll
+    cd z80bench
+    msbuild z80bench\z80bench.sln /m /p:Platform="Any CPU";Configuration=Release;RestorePackagesConfig=true /t:restore;build 
+    for /f %%s in ('git rev-parse --short HEAD') do echo Z80Bench %%s >> ..\versions.txt
+    cd ..
+    7z a tools.7z .\z80bench\z80bench\bin\Release\*.exe .\z80bench\z80bench\bin\Release\*.dll
 
     rem Compile.bat
     7z a tools.7z Compile.bat
