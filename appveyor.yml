@@ -7,10 +7,10 @@ build_script:
 - cmd: |-
     rem Z80Bench
     cd z80bench
-    msbuild z80bench\z80bench.sln /m /p:Platform="Any CPU";Configuration=Release;RestorePackagesConfig=true /t:restore;build 
+    msbuild z80bench.sln /m /p:Platform="Any CPU";Configuration=Release;RestorePackagesConfig=true /t:restore;build 
     for /f %%s in ('git rev-parse --short HEAD') do echo Z80Bench %%s >> ..\versions.txt
     cd ..
-    7z a tools.7z .\z80bench\z80bench\bin\Release\*.exe .\z80bench\z80bench\bin\Release\*.dll
+    7z a tools.7z .\z80bench\bin\Release\*.exe .\z80bench\bin\Release\*.dll
 
     rem flips
     cd flips
