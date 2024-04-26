@@ -22,3 +22,7 @@
 	path = pcmenc
 	url = https://github.com/maxim-zhao/pcmenc.git
 	branch = master
+[submodule "z80bench"]
+	path = z80bench
+	url = https://github.com/maxim-zhao/z80bench.git
+	branch = master
