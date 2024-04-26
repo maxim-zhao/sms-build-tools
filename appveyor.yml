@@ -5,6 +5,13 @@ install:
 - cmd: git submodule update --init --recursive
 build_script:
 - cmd: |-
+    rem Z80Bench
+    cd z80bench
+    msbuild z80bench\z80bench.sln /m /p:Platform="Any CPU";Configuration=Release;RestorePackagesConfig=true /t:restore;build 
+    for /f %%s in ('git rev-parse --short HEAD') do echo Z80Bench %%s >> ..\versions.txt
+    cd ..
+    7z a tools.7z .\z80bench\z80bench\bin\Release\*.exe .\z80bench\z80bench\bin\Release\*.dll
+
     rem flips
     cd flips
     call "c:\Program Files\Microsoft Visual Studio\2022\Community\vc\Auxiliary\Build\vcvars64.bat"
@@ -59,13 +66,6 @@ build_script:
     for /f %%s in ('git rev-parse --short HEAD') do echo pcmenc %%s >> ..\versions.txt
     cd ..
     7z a tools.7z .\pcmenc\encoder\x64\Release\pcmenc.exe
-
-    rem Z80Bench
-    cd z80bench
-    msbuild z80bench\z80bench.sln /m /p:Platform="Any CPU";Configuration=Release;RestorePackagesConfig=true /t:restore;build 
-    for /f %%s in ('git rev-parse --short HEAD') do echo Z80Bench %%s >> ..\versions.txt
-    cd ..
-    7z a tools.7z .\z80bench\z80bench\bin\Release\*.exe .\z80bench\z80bench\bin\Release\*.dll
 
     rem Compile.bat
     7z a tools.7z Compile.bat
