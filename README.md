@@ -16,6 +16,7 @@ Note that this project is only intended to support Windows currently. Linux user
   - Plus a batch file wrapper
 - [Flips](https://github.com/Alcaro/Flips) for making patches
 - [GNU Make](https://www.gnu.org/software/make/) for build automation
+- [Z80Bench](https://github.com/maxim-zhao/z80bench) for testing
 
 Not included:
 
