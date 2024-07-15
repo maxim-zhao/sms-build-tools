@@ -2,7 +2,13 @@ version: 1.0.{build}
 skip_tags: true
 image: Visual Studio 2022
 install:
-- cmd: git submodule update --init --recursive
+- cmd: |
+    git submodule update --init --recursive
+    curl -sSf -o rustup-init.exe https://win.rustup.rs/
+    rustup-init.exe -y --default-host i686-pc-windows-msvc
+    set PATH=%PATH%;%USERPROFILE%\.cargo\bin
+    rustc -Vv
+    cargo -V
 build_script:
 - cmd: |-
     rem Z80Bench
