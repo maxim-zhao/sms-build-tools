@@ -47,12 +47,11 @@ build_script:
     rem BMP2Tile
     cd bmp2tile
     for /f %%s in ('git rev-parse --short HEAD') do echo BMP2Tile %%s >> ..\versions.txt
-    nuget restore source\BMP2Tile.sln
-    msbuild source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release
+    msbuild source\BMP2Tile.sln /m /p:Platform=x86;Configuration=Release /t:restore,bmp2tile
     copy readme.md bmp2tile.readme.md
     copy LICENSE bmp2tile.license.txt
     cd ..
-    7z a tools.7z .\bmp2tile\bmp2tile.exe .\bmp2tile\bmp2tile.readme.md .\bmp2tile\bmp2tile.license.txt
+    7z a tools.7z .\bmp2tile\source\bmp2tile\bin\x86\Release\net48\bmp2tile.exe .\bmp2tile\bmp2tile.readme.md .\bmp2tile\bmp2tile.license.txt
 
     rem compressor DLLs
     cd bmp2tilecompressors
