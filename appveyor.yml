@@ -14,8 +14,8 @@ build_script:
     rem make
     cd make
     rem To build make we need mingw...
-    dir C:\mingw-w64\
-    path %path%;C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\bin
+    rem bootstrap URL is wrong...
+    powershell -Command "(gc bootstrap.bat) -replace 'https://git.savannah.gnu.org', 'https://cgit.git.savannah.gnu.org' | Out-File -encoding ASCII bootstrap.bat"
     call bootstrap.bat
     rem We omit support for the Guile scripting language which doesn't work right in Windows anyway
     call build_w32.bat --without-guile
