@@ -47,7 +47,7 @@ build_script:
     rem BMP2Tile
     cd bmp2tile
     for /f %%s in ('git rev-parse --short HEAD') do echo BMP2Tile %%s >> ..\versions.txt
-    dotnet publish source --configuration Release --runtime win-x86
+    dotnet publish source --configuration Release --runtime win-x86 /p:Platform=x86
     copy readme.md bmp2tile.readme.md
     copy LICENSE bmp2tile.license.txt
     cd ..
