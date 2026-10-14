@@ -16,6 +16,8 @@ build_script:
     rem bootstrap URL is wrong...
     powershell -Command "(gc bootstrap.bat) -replace 'https://git.savannah.gnu.org', 'https://cgit.git.savannah.gnu.org' | Out-File -encoding ASCII bootstrap.bat"
     call bootstrap.bat
+    echo lib\intprops.h:
+    type lib\intprops.h
     rem We omit support for the Guile scripting language which doesn't work right in Windows anyway
     call build_w32.bat --without-guile
     copy WinRel\gnumake.exe make.exe
